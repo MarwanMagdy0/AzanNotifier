@@ -2,3 +2,5 @@ year_data.json
 test.py
 install_data_of_the_year.ipynb
 logo-no-background.png
+logg.log
+__pycache__/

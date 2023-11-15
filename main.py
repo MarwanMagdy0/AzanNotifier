@@ -1,26 +1,6 @@
-from PyQt5.QtWidgets import QDialog, QApplication, QLabel
-from PyQt5.QtCore import QTimer, QThread, Qt
-from plyer import notification
-from datetime import datetime
-from PyQt5.uic import loadUi
-from PIL import Image
-import pystray
-import json
-import time
-import os
+from utiles import *
 
-PATH = os.path.dirname(os.path.realpath(__file__)) + "/"
-NOTIFY_BEFORE = 15 # this is the time that program notifies you before the pray in minuits
-
-def notify(message):
-    notification.notify(
-        title="Azan Notifier",
-        message=message,
-        app_name='Azan Notifier',
-        timeout=1
-    )
-
-# TODO: color, work in background 
+# TODO: colors
 
 class TimestampOperations:
     @staticmethod
