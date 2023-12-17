@@ -26,7 +26,7 @@ def notify(message):
 
 class Logger:
     @staticmethod
-    def logIntoFile(file_name = "logg.log"):
+    def logIntoFile(file_name):
         logging.basicConfig(filename=file_name, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.INFO)
@@ -39,4 +39,4 @@ class Logger:
         logging.error(f'Unhandled exception: {exc_type.__name__}: {exc_value}')
         logging.error("".join(traceback.format_tb(exc_traceback)), )
 
-Logger.logIntoFile()
+Logger.logIntoFile(PATH + "logg.log")

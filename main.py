@@ -143,5 +143,4 @@ if __name__ == "__main__":
     app = QApplication([])
     ui = UI()
     # print(ui.delta_time2hoursMinuitsSeconds(60*61 + ))
-    ui.show()
     app.exec_()
