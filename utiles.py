@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QApplication, QLabel
-from PyQt5.QtCore import QTimer, QThread, Qt
+from PyQt5.QtWidgets import QDialog, QApplication, QLabel, QDesktopWidget
+from PyQt5.QtCore import QTimer, QThread, Qt, QPoint
 from plyer import notification
 from datetime import datetime
 from PyQt5.uic import loadUi

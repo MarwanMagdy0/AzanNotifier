@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 from tqdm import tqdm
-year = 2023
+year = 2024
 def get_api_link(year, month):
     return f"http://api.aladhan.com/v1/calendarByCity/{year}/{month}"
 
@@ -36,5 +36,5 @@ for month in tqdm(range(1, 12 +1), desc=f"installing {year} data...", ncols=100)
         downloaded_data[str(month)][f"{day + 1}"]["hijri_date"] = hijri_date
 
 
-with open("year_data2025.json", 'w') as file:
+with open("year_data.json", 'w') as file:
     json.dump(downloaded_data, file)

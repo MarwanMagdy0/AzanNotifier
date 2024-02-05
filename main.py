@@ -124,6 +124,21 @@ class UI(QDialog):
                 self.next_pray_label.setText(next_pray_text)
                 break
     
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+    
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Escape:
             self.hide()
@@ -136,6 +151,8 @@ class UI(QDialog):
             event.ignore()
         else:
             event.accept()
+    
+
 
 
 
