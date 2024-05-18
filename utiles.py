@@ -27,16 +27,31 @@ def notify(message):
 class Logger:
     @staticmethod
     def logIntoFile(file_name):
-        logging.basicConfig(filename=file_name, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+        # Create the root logger and set its level to DEBUG
+        logger = logging.getLogger()
+        logger.setLevel(logging.DEBUG)
+        
+        # Create a file handler and set its level to INFO
+        file_handler = logging.FileHandler(file_name)
+        file_handler.setLevel(logging.INFO)
+        file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        
+        # Create a console handler and set its level to INFO
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.INFO)
-        logging.getLogger().addHandler(console_handler)
-        sys.excepthook = Logger.handle_exception
+        console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
         
+        # Add handlers to the logger
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
+        
+        # Set custom exception hook to handle uncaught exceptions
+        sys.excepthook = Logger.handle_exception
+
     @staticmethod
     def handle_exception(exc_type, exc_value, exc_traceback):
         # Log unhandled exceptions with traceback
         logging.error(f'Unhandled exception: {exc_type.__name__}: {exc_value}')
-        logging.error("".join(traceback.format_tb(exc_traceback)), )
+        logging.error("".join(traceback.format_tb(exc_traceback)))
 
 Logger.logIntoFile(PATH + "logg.log")

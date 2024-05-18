@@ -1,6 +1,7 @@
 from utiles import *
 
 # TODO: colors
+logging.info("Program Starts")
 
 class TimestampOperations:
     @staticmethod
@@ -124,7 +125,6 @@ class UI(QDialog):
                 self.next_pray_label.setText(next_pray_text)
                 break
     
-
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()

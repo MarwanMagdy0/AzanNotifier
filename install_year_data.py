@@ -2,7 +2,9 @@ import requests
 import json
 import datetime
 from tqdm import tqdm
-year = 2024
+import logging
+from utiles import Logger
+year = datetime.datetime.now().year
 def get_api_link(year, month):
     return f"http://api.aladhan.com/v1/calendarByCity/{year}/{month}"
 
@@ -20,9 +22,10 @@ params = {
     "method": "5"
 }
 
+logging.info(f"[Downloading] {year} data for {params['city']}, {params['country']} using method {params['method']}")
 
 downloaded_data = {}
-for month in tqdm(range(1, 12 +1), desc=f"installing {year} data...", ncols=100):
+for month in tqdm(range(1, 12 +1), desc=f"Downloading {year} data...", ncols=100):
     response = requests.get(get_api_link(year, month), params=params)
     data = response.json()["data"]
     downloaded_data[str(month)] = {}
